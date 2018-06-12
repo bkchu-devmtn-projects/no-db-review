@@ -18,8 +18,10 @@ const getPeople = (req, res, next) => {
 };
 
 const getFilteredPeople = (req, res, next) => {
-  const { filter } = req.query;
+  const { filter } = req.params;
+
   let filteredPeople = people.filter(person => person.name.includes(filter));
+
   res.status(200).send(filteredPeople);
 };
 

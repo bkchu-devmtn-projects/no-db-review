@@ -1,0 +1,6 @@
+.Navbar {
+  display: flex;
+}
+.Navbar__link {
+  padding: 15px;
+}

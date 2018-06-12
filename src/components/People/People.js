@@ -36,7 +36,7 @@ class People extends Component {
   filterPeopleHandler = e => {
     this.setState({ filter: e.target.value });
 
-    axios.get(`/api/people/filter?filter=${e.target.value}`).then(response => {
+    axios.get(`/api/people/filter/${e.target.value}`).then(response => {
       this.setState({ people: response.data });
     });
   };

@@ -13,7 +13,7 @@ app.get('/api/test', (req, res) => {
 
 //getPeople
 app.get('/api/people', peopleCtrl.getPeople);
-app.get('/api/people/filter', peopleCtrl.getFilteredPeople);
+app.get('/api/people/filter/:filter', peopleCtrl.getFilteredPeople);
 app.post('/api/people', peopleCtrl.createPerson);
 app.delete('/api/people/:id', peopleCtrl.deletePerson);
 app.put('/api/people/:id', peopleCtrl.updatePerson);
