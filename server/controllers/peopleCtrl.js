@@ -26,7 +26,7 @@ const getFilteredPeople = (req, res, next) => {
 };
 
 const deletePerson = (req, res, next) => {
-  const { id } = req.params;
+  const { id } = req.params; // anything from params is a string 
   let indexOfPerson = people.findIndex(person => person.id == id);
   people.splice(indexOfPerson, 1);
   res.status(200).send(people);
@@ -52,10 +52,20 @@ const updatePerson = (req, res, next) => {
   res.status(200).send(people);
 };
 
+const existingArrayOfStuff = [1, 2, 3, 4];
+const putSomethingInArray = (req, res, next) => {
+  const { something } = req.body;
+  
+  existingArrayOfStuff.push(something);
+
+  res.status(200).send(existingArrayOfStuff);
+}
+
 module.exports = {
   getPeople,
   getFilteredPeople,
   deletePerson,
   createPerson,
-  updatePerson
+  updatePerson,
+  putSomethingInArray
 };

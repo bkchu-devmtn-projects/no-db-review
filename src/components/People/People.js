@@ -11,7 +11,8 @@ class People extends Component {
       editing: false,
       people: [],
       newPerson: '',
-      filter: ''
+      filter: '',
+      stuff: ''
     };
     // this.deletePersonHandler = this.deletePersonHandler.bind(this);
   }
@@ -59,6 +60,19 @@ class People extends Component {
     this.setState({ editing: !this.state.editing });
   };
 
+  submitStuff = () => {
+    axios.post('/api/putsomethinginarray', { something: this.state.stuff }).then(response => {
+      console.log(response.data);
+    })
+  }
+
+
+
+  onChangeSubmitStuff = e => {
+    this.setState({stuff: e.target.value});
+  }
+  
+  
   render() {
     const { people, editing } = this.state;
 
@@ -94,6 +108,9 @@ class People extends Component {
           placeholder="Filter"
         />
         <div style={{ border: '5px solid rebeccapurple' }}>{peopleDisplay}</div>
+
+        <input onChange={this.onChangeSubmitStuff} type="text"/>
+        <button onClick={this.submitStuff}>SubmitStuff</button>
       </div>
     );
   }
